@@ -198,7 +198,7 @@ export const products = [
         categoryId: 6
     },
     {
-        name: "Galletas de sabores frutales",
+        name: "Macarrons de distintos sabores",
         price: 39.9,
         image: "galletas_06",
         categoryId: 6
@@ -252,7 +252,7 @@ export const products = [
         categoryId: 2
     },
     {
-        name: "4 Rebanadas de Pay de Queso",
+        name: "4 Rebanadas de Pie de Queso",
         price: 69.9,
         image: "pastel_01",
         categoryId: 5
@@ -270,7 +270,7 @@ export const products = [
         categoryId: 5
     },
     {
-        name: "Pay de Queso",
+        name: "Pie de Queso",
         price: 19.9,
         image: "pastel_04",
         categoryId: 5

@@ -17,7 +17,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 <p className="mt-5 font-black text-4xl text-amber-500">{formatCurrency(product.price)}</p>
                 <button
                     type="button"
-                    className="bg-amber-500 hover:bg-amber-700 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer"
+                    className="bg-amber-500 hover:bg-amber-400 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer"
                 >
                     Agregar
                 </button>
