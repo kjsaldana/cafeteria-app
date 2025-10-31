@@ -22,7 +22,7 @@ export default async function OrderPage({ params }: OrderPageProps) {
 
     return (
         <>
-            <h1 className="text-2xl my-10">Elige y personaliza tu pedido a continuación</h1>
+            <h1 className="text-2xl font-semibold py-10">Elige y personaliza tu pedido a continuación!</h1>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 2xl:grid-cols-4 gap-4 items-start">
                 {products.map(product => (
