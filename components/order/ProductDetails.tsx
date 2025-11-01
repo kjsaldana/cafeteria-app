@@ -8,19 +8,22 @@ type ProductDetailsProps = {
     item: OrderItem
 }
 
+const MAX_QTY = 10
+const MIN_QTY = 1
+
 export default function ProductDetails({ item }: ProductDetailsProps) {
     const increaseQty = useStore(state => state.increaseQty)
     const decreaseQty = useStore(state => state.decreaseQty)
-    const disableIncreaseButton = useMemo(() => item.quantity === 10, [item])
-    const disableDecreaseButton = useMemo(() => item.quantity === 1, [item])
-
+    const disableIncreaseButton = useMemo(() => item.quantity === MAX_QTY, [item])
+    const disableDecreaseButton = useMemo(() => item.quantity === MIN_QTY, [item])
+    const removeOrderItem = useStore(state => state.removeOrderItem)
 
     return (
-        <div className="shadow space-y-1 p-4 bg-white border-b last-of-type:border-b-0">
+        <div className="shadow space-y-1 p-4 bg-white border-b border-gray-300 last-of-type:border-b-0">
             <div className="space-y-4">
                 <div className="flex justify-between items-start">
                     <p className="text-xl font-bold">{item.name} </p>
-                    <button type="button" onClick={() => {}}>
+                    <button type="button" onClick={() => removeOrderItem(item.id)}>
                         <XCircleIcon className="text-red-600 h-8 w-8 cursor-pointer" />
                     </button>
                 </div>

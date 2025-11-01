@@ -7,7 +7,7 @@ interface Store {
     addToOrder: (product: Product) => void
     increaseQty: (id: Product['id']) => void
     decreaseQty: (id: Product['id']) => void
-
+    removeOrderItem: (id: Product['id']) => void
 }
 
 export const useStore = create<Store>((set, get) => ({
@@ -27,7 +27,7 @@ export const useStore = create<Store>((set, get) => ({
             order = [...get().order, {
                 ...data,
                 quantity: 1,
-                subtotal: 1 * product.price
+                subtotal: product.price
             }]
         }
 
@@ -53,5 +53,9 @@ export const useStore = create<Store>((set, get) => ({
             } : item)
         }))
     },
-
+    removeOrderItem: (id) => {
+        set((state) => ({
+            order: state.order.filter(item => item.id !== id)
+        }))
+    }
 }))
