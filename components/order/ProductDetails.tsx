@@ -8,12 +8,12 @@ type ProductDetailsProps = {
 
 export default function ProductDetails({ item }: ProductDetailsProps) {
     return (
-        <div className="shadow space-y-1 p-4 bg-white  border-t border-gray-200 ">
+        <div className="shadow space-y-1 p-4 bg-white  border-t border-gray-200 rounded-lg">
             <div className="space-y-4">
                 <div className="flex justify-between items-start">
                     <p className="text-xl font-bold">{item.name} </p>
                     <button type="button" onClick={() => { }}>
-                        <XCircleIcon className="text-red-600 h-8 w-8" />
+                        <XCircleIcon className="text-red-600 h-8 w-8 cursor-pointer" />
                     </button>
                 </div>
 
@@ -21,11 +21,11 @@ export default function ProductDetails({ item }: ProductDetailsProps) {
 
                 <div className="flex gap-5 px-10 py-2 bg-gray-100 w-fit rounded-lg">
                     <button type="button" onClick={() => { }}>
-                        <MinusIcon className="h-6 w-6" />
+                        <MinusIcon className="h-6 w-6 cursor-pointer" />
                     </button>
                     <p className="text-lg font-black ">{item.quantity}</p>
                     <button type="button" onClick={() => { }}>
-                        <PlusIcon className="h-6 w-6" />
+                        <PlusIcon className="h-6 w-6 cursor-pointer" />
                     </button>
                 </div>
 

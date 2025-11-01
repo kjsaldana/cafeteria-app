@@ -1,6 +1,6 @@
 import { Product } from "@/app/generated/prisma/client";
 
 export type OrderItem = Pick<Product, 'id' | 'name' | 'price'> & {
-    quantity: number;
-    subtotal: number;
+    quantity: number
+    subtotal: number
 }
