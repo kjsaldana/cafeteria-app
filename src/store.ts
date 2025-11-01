@@ -6,6 +6,8 @@ interface Store {
     order: OrderItem[]
     addToOrder: (product: Product) => void
     increaseQty: (id: Product['id']) => void
+    decreaseQty: (id: Product['id']) => void
+
 }
 
 export const useStore = create<Store>((set, get) => ({
@@ -41,5 +43,15 @@ export const useStore = create<Store>((set, get) => ({
                 subtotal: item.price * (item.quantity + 1)
             } : item)
         }))
-    }
+    },
+    decreaseQty: (id) => {
+        set((state) => ({
+            order: state.order.map(item => item.id === id ? {
+                ...item,
+                quantity: item.quantity - 1,
+                subtotal: item.price * (item.quantity - 1)
+            } : item)
+        }))
+    },
+
 }))
