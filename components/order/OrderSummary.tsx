@@ -4,13 +4,33 @@ import ProductDetails from "./ProductDetails"
 import { useMemo } from "react"
 import { formatCurrency } from "@/src/utils"
 import { createOrder } from "@/actions/create-order-action"
+import { OrderSchema } from "@/schema"
+import { toast } from "react-toastify"
 
 export default function OrderSummary() {
   const order = useStore(state => state.order)
   const total = useMemo(() => order.reduce((total, item) => total + (item.price * item.quantity), 0), [order])
 
-  const handleSubmitForm = () => {
-    createOrder()
+  const handleCreateOrder = async (formData: FormData) => {
+
+    const data = {
+      name: formData.get('name')
+    }
+
+    const result = OrderSchema.safeParse(data)
+    if (!result.success) {
+      result.error.issues.forEach(issue => {
+        toast.error(issue.message)
+      })
+      return
+    }
+
+    const response = await createOrder(data)
+    if (response?.errors) {
+      response.errors.forEach(issue => {
+        toast.error(issue.message)
+      })
+    }
   }
 
   return (
@@ -23,11 +43,12 @@ export default function OrderSummary() {
           ))}
           <p className="text-2xl mt-20 text-center">Total a pagar: <span className="font-bold">{formatCurrency(total)}</span></p>
 
-          <form action={handleSubmitForm}>
+          <form action={handleCreateOrder} className="mt-10 w-full space-y-5">
+            <input type="text" name="name" placeholder="Tu nombre" className="w-full p-2 bg-white border border-gray-400 rounded-lg" />
             <input
               type="submit"
               value={'confirmar pedido'}
-              className="mt-5 w-full bg-black hover:bg-gray-800 p-2 px-4 text-white font-bold rounded-lg uppercase cursor-pointer"
+              className="w-full bg-black hover:bg-gray-800 py-2 text-white font-bold rounded-lg uppercase cursor-pointer"
             />
           </form>
         </div>)

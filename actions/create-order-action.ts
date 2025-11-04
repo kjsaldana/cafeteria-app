@@ -1,5 +1,12 @@
 "use server"
 
-export async function createOrder() {
-    console.log('desde servidor')
+import { OrderSchema } from "@/schema"
+
+export async function createOrder(data: unknown) {
+    const result = OrderSchema.safeParse(data)
+    if (!result.success) {
+        return {
+            errors: result.error.issues
+        }
+    }
 }
