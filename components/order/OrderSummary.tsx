@@ -6,7 +6,6 @@ import { formatCurrency } from "@/src/utils"
 import { createOrder } from "@/actions/create-order-action"
 import { OrderSchema } from "@/schema"
 import { toast } from "react-toastify"
-import prisma from "@/src/lib/prisma"
 
 export default function OrderSummary() {
   const order = useStore(state => state.order)
@@ -33,25 +32,6 @@ export default function OrderSummary() {
       response.errors.forEach(issue => {
         toast.error(issue.message)
       })
-      return
-    }
-
-    try {
-      prisma.order.create({
-        data: {
-          name: result.data.name,
-          total: result.data.total,
-          orderProducts: {
-            create: result.data.order.map(product => ({
-              productId: product.id,
-              quantity: product.quantity
-            }))
-          }
-        }
-      })
-    } catch (error) {
-      console.log(error)
-
     }
   }
 
