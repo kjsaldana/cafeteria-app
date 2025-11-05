@@ -6,18 +6,21 @@ import { formatCurrency } from "@/src/utils"
 import { createOrder } from "@/actions/create-order-action"
 import { OrderSchema } from "@/schema"
 import { toast } from "react-toastify"
+import prisma from "@/src/lib/prisma"
 
 export default function OrderSummary() {
   const order = useStore(state => state.order)
   const total = useMemo(() => order.reduce((total, item) => total + (item.price * item.quantity), 0), [order])
 
   const handleCreateOrder = async (formData: FormData) => {
-
     const data = {
-      name: formData.get('name')
+      name: formData.get('name'),
+      order,
+      total
     }
 
     const result = OrderSchema.safeParse(data)
+    console.log(result.data)
     if (!result.success) {
       result.error.issues.forEach(issue => {
         toast.error(issue.message)
@@ -30,6 +33,25 @@ export default function OrderSummary() {
       response.errors.forEach(issue => {
         toast.error(issue.message)
       })
+      return
+    }
+
+    try {
+      prisma.order.create({
+        data: {
+          name: result.data.name,
+          total: result.data.total,
+          orderProducts: {
+            create: result.data.order.map(product => ({
+              productId: product.id,
+              quantity: product.quantity
+            }))
+          }
+        }
+      })
+    } catch (error) {
+      console.log(error)
+
     }
   }
 
