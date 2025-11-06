@@ -10,6 +10,7 @@ export async function createOrder(data: unknown) {
             errors: result.error.issues
         }
     }
+    
     try {
         await prisma.order.create({
             data: {
@@ -26,4 +27,4 @@ export async function createOrder(data: unknown) {
     } catch (error) {
         console.log(error)
     }
-}
+}   
