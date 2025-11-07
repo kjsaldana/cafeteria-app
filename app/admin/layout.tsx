@@ -1,11 +1,7 @@
 import ToastNotification from "@/components/ui/ToastNotification";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 
-export default async function AdminLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
+export default async function AdminLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
     return (
         <>
             <div className="md:flex">
