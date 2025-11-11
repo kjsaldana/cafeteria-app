@@ -10,10 +10,10 @@ type CategoryIconProps = {
 
 export default function CategoryIcon({ category }: CategoryIconProps) {
   const params = useParams<{ category: string }>()
-  const isSelected = category.slug === params.category && "bg-amber-400"
+  const isSelected = category.slug === params.category
 
   return (
-    <div className={`flex items-center gap-4 w-full border-t border-gray-200 p-3 last-of-type:border-b ${isSelected}`}>
+    <div className={`flex items-center gap-4 w-full border-t border-gray-200 p-3 last-of-type:border-b ${isSelected && "bg-amber-400 text-white"}`}>
       <div className="w-16 h-16 relative">
         <Image fill src={`/icon_${category.slug}.svg`} alt="Imagen categoria" />
       </div>

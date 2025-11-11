@@ -198,7 +198,7 @@ export const products = [
         categoryId: 6
     },
     {
-        name: "Macarrons de distintos sabores",
+        name: "Macarons de distintos sabores",
         price: 2.90,
         image: "galletas_06",
         categoryId: 6

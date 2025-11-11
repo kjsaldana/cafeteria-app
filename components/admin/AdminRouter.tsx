@@ -17,7 +17,7 @@ export default function AdminRouter({ link }: AdminRouterProps) {
 
     return (
         <Link
-            className={`font-bold text-lg border-t border-gray-200 last-of-type:border-b p-3 ${isSelected && 'bg-amber-400'}`}
+            className={`font-bold text-lg border-t border-gray-200 last-of-type:border-b p-3 ${isSelected && 'bg-amber-400 text-white'}`}
             href={link.url}
             target={link.blank ? '_blank' : ''}
         >
