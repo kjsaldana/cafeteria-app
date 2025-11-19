@@ -1,7 +1,9 @@
+import ProductSearchForm from "@/components/products/ProductSearchForm";
 import ProductsPagination from "@/components/products/ProductsPagination";
 import ProductTable from "@/components/products/ProductTable";
 import Heading from "@/components/ui/Heading";
 import prisma from "@/src/lib/prisma"
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 
@@ -29,7 +31,7 @@ export type SearchParams = { searchParams: Promise<{ page: string }> }
 export default async function productsPage({ searchParams }: SearchParams) {
     const { page } = await searchParams
     const currentPage = +page || 1
-    const pageSize = 10
+    const pageSize = 9
 
     if (currentPage < 1) redirect('/admin/products')
 
@@ -42,6 +44,15 @@ export default async function productsPage({ searchParams }: SearchParams) {
     return (
         <>
             <Heading>Administrar Productos</Heading>
+            <div className="flex flex-col gap-5 lg:flex-row lg:justify-between">
+                <Link
+                    href={"/admin/products/new"}
+                    className="bg-amber-400 text-white w-full lg:w-auto text-xl px-10 py-3 text-center font-bold cursor-pointer rounded-lg"
+                >
+                    Crear producto
+                </Link>
+                <ProductSearchForm />
+            </div>
             <ProductTable products={products} />
             <ProductsPagination page={currentPage} totalPages={totalPages} />
         </>

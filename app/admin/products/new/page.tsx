@@ -1,7 +1,8 @@
-
+import Heading from "@/components/ui/Heading";
 
 export default function createProductPage() {
     return (
-        <div>createProductPage</div>
+        <Heading>Crear Producto</Heading>
+
     )
 }
