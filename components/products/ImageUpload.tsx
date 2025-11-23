@@ -34,6 +34,7 @@ export default function ImageUpload() {
                             </div>
                         )}
                     </div>
+                    <input type="hidden" name="image" value={imageUrl} />
                 </>
             )}
         </CldUploadWidget>
