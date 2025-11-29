@@ -1,5 +1,5 @@
 import { Product } from "@/app/generated/prisma/client"
-import { formatCurrency } from "@/src/utils"
+import { formatCurrency, getImagePath } from "@/src/utils"
 import Image from "next/image"
 import AddProductButton from "./AddProductButton"
 
@@ -8,9 +8,11 @@ type ProductCardProps = {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+    const imagePath = getImagePath(product.image)
+
     return (
         <div className="border border-gray-200 bg-white flex flex-col h-full items-center rounded-lg">
-            <Image height={500} width={400} src={`/products/${product.image}.jpg`} alt="Imagen de producto" />
+            <Image height={500} width={400} src={imagePath} alt="Imagen de producto" />
 
             <div className="p-5 h-full flex flex-col justify-end w-full text-center">
                 <h3 className="text-xl font-black h-full">{product.name}</h3>
