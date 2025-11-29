@@ -15,26 +15,34 @@ export const useStore = create<Store>((set, get) => ({
     order: [],
     addToOrder: (product) => {
         const { categoryId, image, ...data } = product
+        const existingItem = get().order.find(item => item.id === data.id)
 
         let order: OrderItem[] = []
 
-        if (get().order.find(item => item.id === data.id)) {
-            order = get().order.map(item => item.id === data.id ? {
-                ...item,
-                quantity: item.quantity + 1,
-                subtotal: item.price * (item.quantity + 1)
-            } : item)
+        if (existingItem) {
+            // Limitar a 10
+            if (existingItem.quantity >= 10) {
+                order = get().order // no hacer nada si ya está en 10
+            } else {
+                order = get().order.map(item =>
+                    item.id === data.id
+                        ? {
+                            ...item,
+                            quantity: item.quantity + 1,
+                            subtotal: item.price * (item.quantity + 1)
+                        }
+                        : item
+                )
+            }
         } else {
+            // Agregar solo si el producto no supera 10
             order = [...get().order, {
                 ...data,
                 quantity: 1,
                 subtotal: product.price
             }]
         }
-
-        set(() => ({
-            order
-        }))
+        set({ order })
     },
     increaseQty: (id) => {
         set((state) => ({
