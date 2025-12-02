@@ -7,8 +7,5 @@ export default {
   migrations: {
     path: "prisma/migrations",
     seed: 'pnpx tsx prisma/seed.ts',
-  },
-  datasource: {
-    url: env("DATABASE_URL")
   }
 } satisfies PrismaConfig;
