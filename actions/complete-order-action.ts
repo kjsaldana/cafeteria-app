@@ -2,7 +2,6 @@
 
 import { OrderIdSchema } from "@/schema"
 import prisma from "@/src/lib/prisma"
-import { revalidatePath } from "next/cache"
 
 export async function completeOrder(formData: FormData) {
     const data = {
@@ -22,7 +21,6 @@ export async function completeOrder(formData: FormData) {
                     orderReadyAt: new Date(Date.now())
                 }
             })
-            revalidatePath('/amin/products')
         } catch (error) {
             console.log(error)
         }
