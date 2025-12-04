@@ -1,17 +1,26 @@
+"use client"
+
 import { completeOrder } from "@/actions/complete-order-action"
 import { OrderWithProducts } from "@/src/types"
 import { formatCurrency } from "@/src/utils"
+import { useSWRConfig } from "swr"
 
 type OrderCardProps = {
     order: OrderWithProducts
 }
 
 export default function OrderCard({ order }: OrderCardProps) {
+    const { mutate } = useSWRConfig()
+
+    const handleCompleteOrder = async (formData: FormData) => {
+        await completeOrder(formData)
+        mutate("/admin/orders/api")
+    }
 
     return (
         <section
             aria-labelledby="summary-heading"
-            className="mt-16 rounded-lg bg-white px-4 py-6 sm:p-6  lg:mt-0 lg:p-8 space-y-4 flex flex-col justify-between"
+            className="mt-16 rounded-lg bg-white px-4 py-6 sm:p-6 lg:mt-0 lg:p-8 space-y-4 flex flex-col justify-between"
         >
             <div>
                 <p className='text-2xl font-bold text-gray-900'>Cliente: {order.name}</p>
@@ -34,7 +43,7 @@ export default function OrderCard({ order }: OrderCardProps) {
                     <dd className="text-base font-medium text-gray-900">{formatCurrency(order.total)}</dd>
                 </div>
 
-                <form action={completeOrder}>
+                <form action={handleCompleteOrder}>
                     <input type="hidden" value={order.id} name="order_id" />
                     <input
                         type="submit"
