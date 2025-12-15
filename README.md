@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ☕ Sistema de Gestión para Cafetería (Full Stack)
 
-## Getting Started
+Una solución integral diseñada para automatizar y sincronizar el flujo de trabajo en un restaurante. Desde la toma de pedidos por parte del cliente hasta la gestión en cocina y la administración de inventario, todo conectado en tiempo real.
 
-First, run the development server:
+## Arquitectura del Proyecto
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+El sistema se divide en cuatro interfaces interconectadas que comparten una misma base de datos:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Kiosco de Pedidos (Cliente):** Interfaz pública donde los usuarios arman su pedido. Cuenta con un carrito de compras dinámico y validación de órdenes.
+2. **Panel de Cocina (Personal):** Dashboard en tiempo real que recibe las comandas entrantes. Permite al personal cambiar el estado de las órdenes a "Listas".
+3. **Monitor de Entregas (Cliente):** Pantalla informativa que se actualiza automáticamente para mostrar a los clientes cuándo recoger su pedido.
+4. **Panel de Administración (Manager):** CRUD completo y seguro para gestionar el menú (productos, categorías, precios) y subir imágenes.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Stack Tecnológico y Decisiones Técnicas
 
-## Learn More
+Este proyecto utiliza **Next.js** como núcleo, aprovechando sus capacidades full-stack para eliminar la necesidad de un backend separado.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Tecnología | Implementación y Justificación en el Proyecto |
+| :--- | :--- |
+| **Next.js (App Router)** | Orquesta la aplicación completa. Utilizo **Server Components** para consultas seguras y rápidas a la DB en el admin, y **Client Components** para la interactividad del kiosco. |
+| **Prisma ORM** | Elegido para asegurar **type-safety** (seguridad de tipos) desde la base de datos hasta el frontend. Simplifica las relaciones complejas (Categoría -> Producto -> Orden) y agiliza las migraciones en PostgreSQL. |
+| **SWR** | Implementado para lograr una experiencia de **"Tiempo Real"** mediante *polling* inteligente y revalidación en segundo plano. Mantiene sincronizadas las pantallas de Cocina y Clientes sin la sobrecarga de infraestructura de WebSockets. |
+| **Zustand** | Gestiona el estado global del **Carrito de Compras**. Se eligió por su ligereza frente a Redux/Context, facilitando la lógica de añadir/eliminar items y calcular totales dinámicamente en el cliente. |
+| **Zod** | Capa de seguridad e integridad. Se utiliza para validar los esquemas de datos tanto en el frontend (formularios) como en el backend, evitando que datos corruptos lleguen a la base de datos. |
+| **Next-Cloudinary** | Solución para la gestión de medios. Externaliza el almacenamiento y realiza **optimización automática** de las imágenes al subirlas, mejorando drásticamente el rendimiento y los tiempos de carga. |
+| **React-Toastify** | Mejora la **Experiencia de Usuario (UX)** proporcionando feedback visual inmediato y no intrusivo ante acciones asíncronas (ej: confirmación de pedido o errores de validación). |
