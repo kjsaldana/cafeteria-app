@@ -4,7 +4,34 @@
       <h1>☕️ Cafetería - Full Stack Real-Time</h1>
       <p><b>Sincronización total entre Cliente, Cocina y Administración</b></p>
       <hr width="50%" />
-      <p>Next.js 14 | Prisma ORM | SWR | Zustand | Tailwind CSS</p>
+      <p>Next.js 16 | Prisma ORM | SWR | Zustand | Tailwind CSS</p>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width="50%">
+      <div align="center">
+        <img src="./assets/screenshots/sch1.webp" width="100%" alt="Vista 1">
+      </div>
+    </td>
+    <td width="50%">
+      <div align="center">
+        <img src="./assets/screenshots/sch2.webp" width="100%" alt="Vista 2">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <div align="center">
+        <img src="./assets/screenshots/sch3.webp" width="100%" alt="Vista 3">
+      </div>
+    </td>
+    <td width="50%">
+      <div align="center">
+        <img src="./assets/screenshots/sch4.webp" width="100%" alt="Vista 4">
+      </div>
     </td>
   </tr>
 </table>
