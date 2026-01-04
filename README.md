@@ -54,7 +54,7 @@ La aplicación se segmenta en tres ecosistemas dinámicos que comparten la misma
 
 | Tecnología | Implementación y Justificación en el Proyecto |
 | :--- | :--- |
-| **Next.js 14 (App Router)** | Elegido para unificar el Frontend y el Backend. Utilizo **Server Components** para la carga inicial ultrarrápida de categorías y **Client Components** para la interactividad del carrito de compras. |
+| **Next.js 16 (App Router)** | Elegido para unificar el Frontend y el Backend. Utilizo **Server Components** para la carga inicial ultrarrápida de categorías y **Client Components** para la interactividad del carrito de compras. |
 | **Prisma ORM** | Implementado para garantizar un tipado estricto (**Type-Safety**) entre la DB de PostgreSQL y el código. Facilita las consultas complejas de relaciones (Categoría ↔ Producto ↔ Orden) sin escribir SQL manual propenso a errores. |
 | **SWR (Stale-While-Revalidate)** | Crucial para la experiencia de **"Tiempo Real"**. Lo utilicé en el Panel de Cocina para realizar un polling inteligente, manteniendo las comandas actualizadas sin necesidad de la complejidad de WebSockets. |
 | **Zustand** | Seleccionado por encima de Redux o Context API por su ligereza. Gestiona el estado global del carrito, permitiendo cálculos de totales y validaciones de stock de forma instantánea en el navegador. |
