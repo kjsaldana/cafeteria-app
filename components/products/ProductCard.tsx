@@ -11,7 +11,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     const imagePath = getImagePath(product.image)
 
     return (
-        <div className="border border-gray-200 bg-white flex flex-col h-full items-center rounded-lg">
+        <div className="border border-gray-200 bg-white flex flex-col h-full items-center rounded-lg pt-5">
             <Image height={500} width={400} src={imagePath} alt="Imagen de producto" />
 
             <div className="p-5 h-full flex flex-col justify-end w-full text-center">
