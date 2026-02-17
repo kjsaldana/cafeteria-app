@@ -17,7 +17,7 @@ export default function CategoryIcon({ category }: CategoryIconProps) {
       <div className="w-16 h-16 relative">
         <Image fill src={`/icon_${category.slug}.svg`} alt="Imagen categoria" />
       </div>
-      <Link className="text-xl font-bold" href={`/order/${category.slug}`}>{category.name}</Link>
+      <Link className="text-2xl font-bold" href={`/order/${category.slug}`}>{category.name}</Link>
     </div>
   )
 }

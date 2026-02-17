@@ -156,7 +156,7 @@ export const products = [
         categoryId: 4
     },
     {
-        name: "Paquete de 3 Donas de Chocolate con Chispas",
+        name: "Paquete de 3 Donas de Chocolate",
         price: 39.9,
         image: "donas_13",
         categoryId: 4
