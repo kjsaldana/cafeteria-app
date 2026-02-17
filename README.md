@@ -55,7 +55,7 @@ La aplicación se segmenta en tres ecosistemas dinámicos que comparten la misma
 | Tecnología | Implementación y Justificación en el Proyecto |
 | :--- | :--- |
 | **Next.js 16 (App Router)** | Elegido para unificar el Frontend y el Backend. Utilizo **Server Components** para la carga inicial ultrarrápida de categorías y **Client Components** para la interactividad del carrito de compras. |
-| **Prisma ORM** | Implementado para garantizar un tipado estricto (**Type-Safety**) entre la DB de PostgreSQL y el código. Facilita las consultas complejas de relaciones (Categoría ↔ Producto ↔ Orden) sin escribir SQL manual propenso a errores. |
+| **Prisma ORM** | Implementado para garantizar un tipado estricto entre la DB de PostgreSQL y el código. Facilita las consultas complejas de relaciones (Categoría ↔ Producto ↔ Orden) sin escribir SQL manual propenso a errores. |
 | **SWR (Stale-While-Revalidate)** | Crucial para la experiencia de **"Tiempo Real"**. Lo utilicé en el Panel de Cocina para realizar un polling inteligente, manteniendo las comandas actualizadas sin necesidad de la complejidad de WebSockets. |
 | **Zustand** | Seleccionado por encima de Redux o Context API por su ligereza. Gestiona el estado global del carrito, permitiendo cálculos de totales y validaciones de stock de forma instantánea en el navegador. |
 | **Tailwind CSS** | Utilizado para un diseño **Mobile-First**. La justificación fue la velocidad de desarrollo y la capacidad de crear una interfaz limpia que no distraiga al cliente durante el proceso de compra. |
@@ -66,10 +66,10 @@ La aplicación se segmenta en tres ecosistemas dinámicos que comparten la misma
 ## Desafíos Técnicos Resueltos
 
 ### 1. Integración de API Routes y Validaciones
-Implementé rutas de API en Next.js para procesar los pedidos. El desafío fue asegurar que cada orden enviada cumpliera con el esquema de datos correcto; para ello, utilicé **Zod** para validar la integridad de la información antes de que Prisma la inserte en la base de datos.
+Implementé rutas de API en Next.js para procesar los pedidos. El desafío fue asegurar que cada orden enviada cumpliera con el esquema de datos correcto; para ello, utilicé Zod para validar la integridad de la información antes de que Prisma la inserte en la base de datos.
 
 ### 2. Gestión de Estado Persistente
-Para evitar que el usuario pierda su pedido si recarga la página accidentalmente en el quiosco, optimicé el store de **Zustand** para mantener la persistencia necesaria durante la sesión de compra, garantizando una UX fluida.
+Para evitar que el usuario pierda su pedido si recarga la página accidentalmente en el quiosco, optimicé el store de Zustand para mantener la persistencia necesaria durante la sesión de compra, garantizando una UX fluida.
 
 ### 3. Escalabilidad de Datos
 La estructura de la base de datos fue diseñada para ser escalable. Mediante Prisma, se crearon relaciones que permiten al administrador cambiar una categoría de lugar o actualizar un precio, y que este cambio se refleje instantáneamente en todas las interfaces sin discrepancias.
