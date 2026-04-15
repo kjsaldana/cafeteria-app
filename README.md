@@ -38,7 +38,12 @@
 
 ## Visión General
 
-Este sistema es una solución integral para la automatización de pedidos en restaurantes. A diferencia de un sitio e-commerce tradicional, este proyecto resuelve el flujo operativo completo: desde la selección táctil por el cliente, hasta el despacho en cocina y la gestión de inventario por el administrador, todo operando bajo una única fuente de verdad.
+Este sistema es una solución integral para la automatización de pedidos en restaurantes. A diferencia de un sitio e-commerce tradicional, este proyecto resuelve el flujo operativo completo: desde la selección táctil por el cliente, hasta el despacho en cocina y la gestión de inventario por el administrador, todo operando bajo una única fuente de verdad.  
+<br>
+**Enlaces**  
+Quiosco de Pedidos : https://cafeteria-app-lovat.vercel.app/ordes  
+Panel de Cocina: https://cafeteria-app-lovat.vercel.app/orders  
+Administración: https://cafeteria-app-lovat.vercel.app/admin/products  
 
 ## Arquitectura de Interfaces
 
