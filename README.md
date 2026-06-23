@@ -1,7 +1,7 @@
 <table width="100%" align="center">
   <tr>
     <td align="center" valign="middle">
-      <h1>☕️ Cafetería - Full Stack Real-Time</h1>
+      <h1>☕️ Cafetería - Real-Time</h1>
       <p><b>Sincronización total entre Cliente, Cocina y Administración</b></p>
       <hr width="50%" />
       <p>Next.js 16 | Prisma ORM | SWR | Zustand | Tailwind CSS</p>
